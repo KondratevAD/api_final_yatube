@@ -25,7 +25,12 @@ class Post(models.Model):
         help_text='Выберите группу'
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Возвращает текст поста
+
+        Ключевой аргумент:
+        text -- Содержание поста
+        """
         return self.text[:20]
 
     class Meta:
@@ -107,6 +112,14 @@ class Follow(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Подписант'
     )
+
+    def __str__(self) -> str:
+        """Возвращает имя на кого подписан
+
+        Ключевой аргумент:
+        following.username -- Имя на кого подписан
+        """
+        return self.following.username
 
     class Meta:
         verbose_name = 'Подписчик'
